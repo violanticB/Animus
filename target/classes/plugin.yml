@@ -1,0 +1,4 @@
+name: Animus
+version: 0.1
+main: animus.AnimusPlugin
+description: Database Systems project

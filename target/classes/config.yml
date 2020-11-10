@@ -1,0 +1,9 @@
+vaults:
+  vault_a:
+    world: 'world'
+    door_corner1: -303.0;71.0;-35.0
+    door_corner2: -298.0;75.0;-35.0
+    door_center: -301.0;73.0;-35.0
+    corner_1: -303.5;71.0;-35.0
+    corner_2: -298.5;75.0;-43.5
+    slots: 16
