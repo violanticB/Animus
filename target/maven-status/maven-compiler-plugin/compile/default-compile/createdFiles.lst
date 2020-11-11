@@ -4,6 +4,7 @@ animus\listener\VaultListener$1.class
 animus\vault\Vault.class
 animus\world\geometry\shapes\SquareWorldGeometry.class
 animus\world\geometry\task\GeometryUndoTask.class
+animus\command\LoadInventoryCommand.class
 animus\util\Config.class
 animus\sql\DatabaseManager.class
 animus\world\geometry\task\GeometryFloodFillTask.class
@@ -16,9 +17,11 @@ animus\util\DirectionAxis.class
 animus\AnimusPlugin.class
 animus\auction\AuctionHouse.class
 animus\world\geometry\shapes\EllipseWorldGeometry.class
+animus\util\Base64Coder.class
 animus\world\geometry\task\CompletableTask.class
 animus\world\geometry\task\GeometryFloodFillTask$VisitedNode.class
 animus\listener\VaultListener.class
 animus\item\AnimusItem.class
+animus\command\StoreInventoryCommand.class
 animus\world\geometry\task\GeometryFloodFillTask$1.class
 animus\vault\VaultConfig.class

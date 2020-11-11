@@ -1,6 +1,7 @@
 package animus.vault;
 
 import animus.AnimusPlugin;
+import animus.sql.DatabaseManager;
 import animus.world.geometry.task.GeometryFloodFillTask;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -13,11 +14,17 @@ import java.util.List;
  */
 public class VaultManager {
 
+    private DatabaseManager manager;
     private List<Vault> vaults;
     private VaultConfig config;
 
-    public VaultManager(VaultConfig config) {
+    public VaultManager(DatabaseManager manager, VaultConfig config) {
+        this.manager = manager;
         this.config = config;
+    }
+
+    public DatabaseManager getManager() {
+        return manager;
     }
 
     public List<Vault> getVaults() {

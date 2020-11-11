@@ -1,11 +1,14 @@
 package animus.vault;
 
 import animus.AnimusPlugin;
+import animus.item.AnimusItem;
 import animus.world.geometry.shapes.SquareWorldGeometry;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.EntityType;
 import org.bukkit.scheduler.BukkitScheduler;
 
 import java.util.*;
@@ -48,7 +51,6 @@ public class VaultConfig {
             double y1 = Math.max(cornerA.getY(), cornerB.getY());
             SquareWorldGeometry region = new SquareWorldGeometry(x0, z0, y0, x1, z1, y1,false);
             vault.setRegion(region);
-
 //            String[] locToken = section.getString(vaultId + ".door_center").split(";");
 //            Location center = new Location(world, Double.parseDouble(locToken[0]), Double.parseDouble(locToken[1]), Double.parseDouble(locToken[2]));
 
@@ -62,7 +64,23 @@ public class VaultConfig {
             x1 = Math.max(doorCornerA.getX(), doorCornerB.getX());
             z1 = Math.max(doorCornerA.getZ(), doorCornerB.getZ());
             y1 = Math.max(doorCornerA.getY(), doorCornerB.getY());
-            
+
+            int slots = 0;
+            for (String slotLocation : section.getStringList(vaultId + ".item_slots")) {
+                Location location = fromString(world, slotLocation);
+                vault.getItemSlots().add(location);
+
+                ArmorStand itemStand = (ArmorStand) world.spawnEntity(location.clone().add(0, -1, 0), EntityType.ARMOR_STAND);
+                itemStand.setVisible(false);
+
+                vault.getStands().add(itemStand);
+                slots++;
+            }
+
+            AnimusItem[] itemArray = new AnimusItem[slots];
+            System.out.println("Creating empty set of " + slots + " items");
+            vault.setCurrentItems(itemArray);
+
             SquareWorldGeometry doorGeometry = new SquareWorldGeometry(x0, z0, y0, x1, z1, y1,false);
             doorGeometry.setCenter(doorCenter);
             vault.setDoorGeometry(doorGeometry);

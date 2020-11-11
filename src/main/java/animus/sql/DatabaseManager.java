@@ -34,6 +34,7 @@ public class DatabaseManager {
             e.printStackTrace();
         }
     }
+
     /**
      * Connection to JDBC
      * @return Connection
@@ -41,6 +42,7 @@ public class DatabaseManager {
     public Connection getConnection() {
         return connection;
     }
+
     /**
      * The statement is cached and the execution path
      * is pre-determined on the database server allowing

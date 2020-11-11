@@ -1,5 +1,7 @@
 package animus;
 
+import animus.command.LoadInventoryCommand;
+import animus.command.StoreInventoryCommand;
 import animus.listener.PlayerListener;
 import animus.listener.VaultListener;
 import animus.sql.DatabaseManager;
@@ -38,11 +40,14 @@ public class AnimusPlugin extends JavaPlugin {
         }
 
         vaultConfig = new VaultConfig(getConfig().getConfigurationSection("vaults"));
-        vaultManager = new VaultManager(vaultConfig);
+        vaultManager = new VaultManager(database, vaultConfig);
         vaultManager.reload();
         for (Vault vault : vaultManager.getVaults()) {
             vaultManager.invokeAnimation(vault, false);
         }
+
+        getCommand("vload").setExecutor(new LoadInventoryCommand());
+        getCommand("vsave").setExecutor(new StoreInventoryCommand());
 
         // Register server events
         getServer().getPluginManager().registerEvents(new PlayerListener(database), this);

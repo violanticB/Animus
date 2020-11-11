@@ -1,29 +1,25 @@
 package animus.item;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 /**
  * @author Ethan Borawski
  */
 
-@Entity
 public class AnimusItem {
 
-    @Id
-    private Long id;
+    private int id;
     private String stackBase64;
     private int index;
     private boolean locked;
 
     public AnimusItem() {
+        this.id = -1;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
